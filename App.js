@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 const groot = ReactDOM.createRoot(document.getElementById("groot"));
 
 const parent = React.createElement("div", { id: "parent" }, [
@@ -11,4 +14,4 @@ const parent = React.createElement("div", { id: "parent" }, [
   ]),
 ]);
 
-setTimeout(groot.render(parent), 10000);
+groot.render(parent);
