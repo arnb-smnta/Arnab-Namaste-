@@ -35,3 +35,6 @@ CDN links are not a good way to bring react or react dom into our project -Becau
 remove main:app.js from package.json or itwill conflict in production
 
 Dont push the files in git hub that can be regenarated
+
+To support in older browser we need browsers list
+

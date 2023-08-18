@@ -1,17 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const groot = ReactDOM.createRoot(document.getElementById("groot"));
+//React Element
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", { id: "parent" }, "I am h1 tag"),
-    React.createElement("h2", { id: "parent" }, "I am h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", { id: "parent" }, "I am h1 tag"),
-    React.createElement("h2", { id: "parent" }, "I am h2 tag"),
-  ]),
-]);
+const jsxHeading = <h1 id="heading">React using jsx</h1>;
+console.log(jsxHeading);
+const TitleComponent = <h1>Title namaste react</h1>;
+const HeadingComponent = () => {
+  return (
+    <>
+      {TitleComponent}
+      <h1> inside React Functional Component</h1>;
+    </>
+  );
+};
 
-groot.render(parent);
+const root = ReactDOM.createRoot(document.getElementById("groot"));
+root.render(<HeadingComponent />);
