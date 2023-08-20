@@ -15,7 +15,7 @@ Lexical scope, also known as static scope, is a fundamental concept in programmi
 named imports-Named imports allows selectively import specific variables ,function,or objects from a module into your own code .We have to export the designated params from the module to import in different code
 asyncawait
 destructuring
-map
+map-Akshay saini map filter reduce
 filter
 reduce
 promises
@@ -23,3 +23,8 @@ callback
 scopes
 working with objects
 asynchronus javascript
+optional chaining
+
+<h1>CSS</h1>
+1.FlexBox
+2.Flex Properties
