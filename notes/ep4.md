@@ -38,3 +38,5 @@ We can destructure it on the fly like destructuring of objects
 Config driven UI-Websites are driven by configs(data) .Data is the config .
 
 Whenever you are looping or maping in JSX componets always pass a uniquey key prop in the props for uniquefication
+
+React itself says dont use index as keys because it would be rewrite every time when the data is changed thus defeating the purpose and react it will re render the data again again and purpose of using unique key is to prevent continiously rendering which will make our app slow.
