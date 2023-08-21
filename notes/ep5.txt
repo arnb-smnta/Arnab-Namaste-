@@ -1,0 +1,22 @@
+v: 1
+_v: j101
+a: 1636601102
+t: pageview
+_s: 1
+dl: https%3A%2F%2Fwww.zomato.com%2Fkolkata
+dp: %2Fkolkata
+ul: en-gb
+de: UTF-8
+dt: Checkout%20Best%20Food%20Places%20To%20Eat%20In%20Kolkata%20%7C%20Zomato
+sd: 24-bit
+sr: 1920x1080
+vp: 1905x236
+je: 0
+_u: yCCAAEABAAAAACgCIAC~
+jid: 
+gjid: 
+cid: 629607924.1692450761
+tid: UA-19617341-30
+_gid: 1180043807.1692626908
+_slc: 1
+z: 1741874633
