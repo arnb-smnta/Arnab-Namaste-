@@ -69,6 +69,12 @@ console.log(outputlowestnumber);
 
 promises
 
+Promises are used to handle async operations in JS MDN docs
+promise gening to avoid call back hell
+always return data to apromise while chaining the promises
+
+Promise is a object that represents eventual completion or failure of a async operation in js
+
 callback
 
 A callback function is a function that is passed as an argument to another function, to be “called back” at a later time inside the function.
