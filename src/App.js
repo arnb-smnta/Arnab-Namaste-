@@ -1,42 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import resobj from "../data.js";
+import { resobj } from "./utils/data.js";
 import Header from "./components/Header.jsx";
-const res = resobj;
-
+import RestrauntCard from "./components/RestrauntCard.jsx";
+import { useState } from "react";
 const BodyApp = () => {
+  const [resrest, setresrest] = useState(resobj);
   return (
     <div className="body">
       <h3>Search</h3>
       <button className="searchbutton_body">Search</button>
+      <div className="filter">
+        <button
+          onClick={() => {
+            const filterdlist = resobj.filter((res) => res.info.avgRating > 4);
+            console.log(filterdlist);
+            setresrest(filterdlist);
+          }}
+          className="filter-btn"
+        >
+          Top Rated Restraunt
+        </button>
+      </div>
       <div className="Res-container">
-        {resobj.map((restraunt) => {
-          return <ResCard restraunt={restraunt} />;
+        {resrest.map((restraunt) => {
+          return (
+            <RestrauntCard key={restraunt.info.id} restraunt={restraunt} />
+          );
         })}
       </div>
     </div>
   );
 };
-const ResCard = (props) => {
-  console.log(props);
-  return (
-    <div className="res-card">
-      <img
-        className="foodphoto"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          props.restraunt.info.cloudinaryImageId
-        }
-        alt="Food Photo"
-      />
-      <h3>{props.restraunt.info.name}</h3>
-      <h4>Cuisines {props.restraunt.info.cuisines.join(" ")}</h4>
-      <h4>Avg Rating {props.restraunt.info.avgRating} stars</h4>
-      <h4>Cost for two {props.restraunt.info.costForTwo}</h4>
-      <h4>Place {props.restraunt.info.areaName}</h4>
-    </div>
-  );
-};
+
 const Applayout = () => {
   return (
     <div className="app">

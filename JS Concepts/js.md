@@ -66,14 +66,31 @@ return acc;
 }, arr[0]);
 
 console.log(outputlowestnumber);
+
 promises
+
 callback
+
+A callback function is a function that is passed as an argument to another function, to be “called back” at a later time inside the function.
 scopes
 working with objects
 asynchronus javascript
+
 optional chaining
 higher order function
+
+Event loop-It checks the callback queue,micro task queue and the call stack to see if there is anything to execute and pushes the function in call stack.Event will start executing the codes only when the call stack of JS engine is empty.
+
+Micro task queue-fetch promises are queued in micro task queue it is also handled by event loop,Micro task queue has higher priority. all the callback functions that comes through promises and mutation observer will come to Micro task queue
 
 <h1>CSS</h1>
 1.FlexBox
 2.Flex Properties
+
+Web Apis-Not part of JS Window-Global object
+Set Timeout()
+Dom APis
+fetch()-fetch goes and request a api
+local storage
+console
+location

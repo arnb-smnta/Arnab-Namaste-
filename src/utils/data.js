@@ -1,4 +1,4 @@
-const resobj = [
+export const resobj = [
   {
     info: {
       id: "181678",
@@ -8,7 +8,7 @@ const resobj = [
       areaName: "Serampore",
       costForTwo: "₹400 for two",
       cuisines: ["Pizzas", "Italian", "Pastas", "Desserts"],
-      avgRating: 4.3,
+      avgRating: 3.8,
       feeDetails: {
         restaurantId: "181678",
         fees: [
@@ -792,5 +792,7 @@ const resobj = [
     widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
   },
 ];
-
-export default resobj;
+export const pic_url =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+export const logo_url =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQ9W98Mg2_uVUCWTJY_WkT0adfjOEXCvHRQ";
