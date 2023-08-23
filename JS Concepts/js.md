@@ -14,7 +14,12 @@ lexical scope-
 Lexical scope, also known as static scope, is a fundamental concept in programming languages, including JavaScript. It refers to how variables are resolved and accessed based on their location in the source code during the compilation or parsing phase, rather than at runtime. Lexical scope determines the visibility and accessibility of variables and functions within a given block of code.
 named imports-Named imports allows selectively import specific variables ,function,or objects from a module into your own code .We have to export the designated params from the module to import in different code.
 
-asyncawait
+asyncawait-We can amke any function async to make them wait for promises
+
+an async function always returns a promise
+
+await frezzes the call stack for a promise to get FULLFILLED
+ITS JUST A ELEGEANT WAY TO GETTING THE PROMISE RESULT AND ITS EASIER TO READ AND WRITE
 
 destructuring
 

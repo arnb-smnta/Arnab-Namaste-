@@ -3,9 +3,30 @@ import ReactDOM from "react-dom/client";
 import { resobj } from "./utils/data.js";
 import Header from "./components/Header.jsx";
 import RestrauntCard from "./components/RestrauntCard.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./components/shimmer.js";
+
 const BodyApp = () => {
   const [resrest, setresrest] = useState(resobj);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.748431243684443&lng=88.34821924567223&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await data.json();
+
+    console.log(json);
+    setresrest(
+      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+    );
+  };
+  if (resrest.length === 0) {
+    return <Shimmer />;
+  }
   return (
     <div className="body">
       <h3>Search</h3>
