@@ -21,13 +21,13 @@ const BodyApp = () => {
 
     console.log(json);
     setresrest(
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants
     );
   };
-  if (resrest.length === 0) {
-    return <Shimmer />;
-  }
-  return (
+
+  return resrest.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <h3>Search</h3>
       <button className="searchbutton_body">Search</button>
