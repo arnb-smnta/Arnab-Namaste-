@@ -5,7 +5,9 @@ import Header from "./components/Header.jsx";
 import RestrauntCard from "./components/RestrauntCard.jsx";
 import { useState, useEffect } from "react";
 import Shimmer from "./components/shimmer.js";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Contact from "./components/Contact.js";
+import About from "./components/About";
 const BodyApp = () => {
   const [resrest, setresrest] = useState(resobj);
   const [inp, setinp] = useState("");
@@ -89,6 +91,22 @@ const Applayout = () => {
     </div>
   );
 };
+import Error from "./components/Error";
+const appRouting = createBrowserRouter([
+  {
+    path: "/",
+    element: <Applayout />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("groot"));
-root.render(<Applayout />);
+root.render(<RouterProvider router={appRouting} />);
