@@ -28,4 +28,4 @@ Use effect is always called after rendering at any case
 
 H.W akahay saini cors video
 
-Shimmer UI we load fake page untill the data is loaded
+Shimmer UI we load fake page untill the data is loaded.

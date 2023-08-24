@@ -5,9 +5,10 @@ import Header from "./components/Header.jsx";
 import RestrauntCard from "./components/RestrauntCard.jsx";
 import { useState, useEffect } from "react";
 import Shimmer from "./components/shimmer.js";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact.js";
 import About from "./components/About";
+import RestaurantMenu from "./components/RestaurantMenu.jsx";
 const BodyApp = () => {
   const [resrest, setresrest] = useState(resobj);
   const [inp, setinp] = useState("");
@@ -19,7 +20,7 @@ const BodyApp = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.748431243684443&lng=88.34821924567223&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -27,11 +28,11 @@ const BodyApp = () => {
     console.log(json);
 
     setresrest(
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     );
 
     setdata1(
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     );
     console.log(data1);
     console.log(resrest);
@@ -87,7 +88,7 @@ const Applayout = () => {
   return (
     <div className="app">
       <Header />
-      <BodyApp />
+      <Outlet />
     </div>
   );
 };
@@ -96,15 +97,19 @@ const appRouting = createBrowserRouter([
   {
     path: "/",
     element: <Applayout />,
+    children: [
+      { path: "/", element: <BodyApp /> },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      { path: "/restaurant/:id", element: <RestaurantMenu /> },
+    ],
     errorElement: <Error />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
   },
 ]);
 

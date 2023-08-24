@@ -17,3 +17,16 @@ React router dom gives hook {useRouteError} for error
 
 Children routes of app layout
 {Outlet}
+
+{Link} it works exactly the same as anchor tag even the implementation-> <Link to="/About">About us</Link> same as <a href='/about'> About us </a>
+We should use the link from react router because whenever we use this to go to another page it does not re renders the entire page it faster and efficient
+
+# Two types of routing in web apps
+
+-Client site routing
+-Server side routing
+
+H.w Graph ql?
+
+Dynamic routing
+{useParams}
