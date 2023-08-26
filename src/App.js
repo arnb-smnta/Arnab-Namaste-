@@ -5,7 +5,12 @@ import Header from "./components/Header.jsx";
 import RestrauntCard from "./components/RestrauntCard.jsx";
 import { useState, useEffect } from "react";
 import Shimmer from "./components/shimmer.js";
-import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  Outlet,
+  createBrowserRouter,
+  RouterProvider,
+  Link,
+} from "react-router-dom";
 import Contact from "./components/Contact.js";
 import About from "./components/About";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
@@ -76,7 +81,15 @@ const BodyApp = () => {
       <div className="Res-container">
         {data1.map((restraunt) => {
           return (
-            <RestrauntCard key={restraunt.info.id} restraunt={restraunt} />
+            <Link
+              key={restraunt.info.id}
+              to={
+                "/restaurant/" + restraunt.info.id + "/" + restraunt.info.name
+              }
+            >
+              {" "}
+              <RestrauntCard restraunt={restraunt} />
+            </Link>
           );
         })}
       </div>
@@ -107,7 +120,7 @@ const appRouting = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      { path: "/restaurant/:resId", element: <RestaurantMenu /> },
+      { path: "/restaurant/:resId/:res_name", element: <RestaurantMenu /> },
     ],
     errorElement: <Error />,
   },

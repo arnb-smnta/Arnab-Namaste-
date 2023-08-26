@@ -3,7 +3,7 @@ import { menu_url, foodimgurl } from "../utils/data";
 import { Shimmer } from "./shimmer";
 import { useParams } from "react-router-dom";
 const RestaurantMenu = () => {
-  const { resId } = useParams();
+  const { resId, res_name } = useParams();
   console.log(resId.toString());
   const [resdata, setresdata] = useState(null);
   useEffect(() => {
@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
 
   return (
     <div>
-      <h1>Restaurant Name</h1>
+      <h1>{res_name}</h1>
       <ul className="MenuItems">
         {resdata.map((res) => {
           return (

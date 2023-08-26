@@ -29,4 +29,4 @@ We should use the link from react router because whenever we use this to go to a
 H.w Graph ql?
 
 Dynamic routing
-{useParams}
+{useParams} use to extract the data from the variable in the url directly into our code
