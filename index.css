@@ -78,3 +78,19 @@
 .search_bar > button {
   cursor: pointer;
 }
+
+.Food-items {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  height: 200px;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.Food-items > li {
+  padding: 10px;
+}
+.Food-items > img {
+  padding-left: 500px;
+}
