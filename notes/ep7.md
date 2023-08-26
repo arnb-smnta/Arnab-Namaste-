@@ -30,3 +30,4 @@ H.w Graph ql?
 
 Dynamic routing
 {useParams} use to extract the data from the variable in the url directly into our code
+H.w Try to do all the features.
