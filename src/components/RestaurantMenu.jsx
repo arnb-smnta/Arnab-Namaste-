@@ -2,23 +2,12 @@ import { useState, useEffect } from "react";
 import { menu_url, foodimgurl } from "../utils/data";
 import { Shimmer } from "./shimmer";
 import { useParams } from "react-router-dom";
+import useRestrauntMenu from "../utils/useRestrauntMenu";
 const RestaurantMenu = () => {
   const { resId, res_name } = useParams();
   console.log(resId.toString());
-  const [resdata, setresdata] = useState(null);
-  useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    const data = await fetch(menu_url + resId.toString());
-    const json = await data.json();
-    console.log(json);
 
-    setresdata(
-      json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .itemCards
-    );
-  };
+  const resdata = useRestrauntMenu(resId);
 
   if (resdata === null) return <div>loading</div>;
 

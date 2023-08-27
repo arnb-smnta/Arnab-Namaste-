@@ -14,36 +14,14 @@ import {
 import Contact from "./components/Contact.js";
 import About from "./components/About";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
+import { swiggy_api } from "./utils/data.js";
+import useSwiggyData from "./utils/useSwiggyData.js";
 const BodyApp = () => {
-  const [resrest, setresrest] = useState(resobj);
   const [inp, setinp] = useState("");
-  const [data1, setdata1] = useState(resobj);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [resrest, data1] = useSwiggyData();
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const json = await data.json();
-
-    console.log(json);
-
-    setresrest(
-      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
-    );
-
-    setdata1(
-      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
-    );
-    console.log(data1);
-    console.log(resrest);
-  };
-
-  return resrest.length === 0 ? (
+  return resrest === null ? (
     <Shimmer />
   ) : (
     <div className="body">

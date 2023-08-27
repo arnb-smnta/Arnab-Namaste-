@@ -65,3 +65,20 @@ like in useeffect
 In case of two child render
 
 <src link="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">React lifecycle diagram (project.wojtek.com)</src>
+
+part6
+
+Making api calls
+
+async componentDidMount() {
+const data=await fetch("link)
+const json=await data.json()
+
+console.log(json)
+}
+
+NEVER COMPARE CLASS COMPONENTS WITH FUCTIONAL COMPONENTS
+
+VERY IMPORTANT
+
+return () =>{ us in set effect to unmount this in functional component}
