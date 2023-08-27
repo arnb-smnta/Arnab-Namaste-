@@ -16,11 +16,13 @@ import About from "./components/About";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import { swiggy_api } from "./utils/data.js";
 import useSwiggyData from "./utils/useSwiggyData.js";
+import useOnlineStatus from "./utils/useOnlineStatus.js";
 const BodyApp = () => {
   const [inp, setinp] = useState("");
 
   const [resrest, data1] = useSwiggyData();
-
+  const online = useOnlineStatus();
+  if (online === false) return <h1>You are offline</h1>;
   return resrest === null ? (
     <Shimmer />
   ) : (
@@ -84,6 +86,7 @@ const Applayout = () => {
   );
 };
 import Error from "./components/Error";
+import useOnlineStatus from "./utils/useOnlineStatus.js";
 const appRouting = createBrowserRouter([
   {
     path: "/",
