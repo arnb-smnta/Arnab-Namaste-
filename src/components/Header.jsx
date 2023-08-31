@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { logo_url } from "../utils/data";
 import { Link } from "react-router-dom";
+
 const Header = () => {
   const [login, setlogin] = useState("login");
   return (
-    <div className="header">
+    <div className="flex">
       <div>
-        <img className="logo" src={logo_url} />
+        <img className="w-4" src={logo_url} />
       </div>
       <div className="nav-items">
         <ul>
