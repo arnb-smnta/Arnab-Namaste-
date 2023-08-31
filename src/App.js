@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { resobj } from "./utils/data.js";
 import Header from "./components/Header.jsx";
@@ -76,7 +76,9 @@ const BodyApp = () => {
     </div>
   );
 };
-
+const Grocery = lazy(() => {
+  return import("./components/Grocery.js");
+});
 const Applayout = () => {
   return (
     <div className="app">
@@ -96,6 +98,15 @@ const appRouting = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<div>Loading ...</div>}>
+            {" "}
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
