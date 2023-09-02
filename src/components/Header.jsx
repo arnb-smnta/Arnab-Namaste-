@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className="flex">
       <div>
-        <img className="w-4" src={logo_url} />
+        <img className="w-64" src={logo_url} />
       </div>
       <div className="nav-items">
         <ul>
