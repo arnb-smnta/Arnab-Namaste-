@@ -17,4 +17,16 @@ const RestrauntCard = (props) => {
     </div>
   );
 };
+
+//Higher order component
+//input -restraunt card => Restarunt card component
+
+const withPromotedLabel = () => {
+  return (props) => {
+    <div>
+      <label>Promoted</label>
+      <RestrauntCard />
+    </div>;
+  };
+};
 export default RestrauntCard;
