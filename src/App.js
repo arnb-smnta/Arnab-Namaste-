@@ -27,8 +27,9 @@ const BodyApp = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="search_bar">
+      <div className="search_bar m-6 bg-gray-400">
         <input
+          className="border border-solid border-black"
           type="text"
           value={inp}
           onChange={(e) => {
@@ -58,7 +59,7 @@ const BodyApp = () => {
           Top Rated Restraunt
         </button>
       </div>
-      <div className="Res-container">
+      <div className="Res-container flex flex-wrap">
         {data1.map((restraunt) => {
           return (
             <Link
