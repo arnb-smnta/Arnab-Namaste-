@@ -14,6 +14,7 @@ const RestaurantMenu = () => {
   return (
     <div>
       <h1>{res_name}</h1>
+      {console.log(resdata)}
       <ul className="MenuItems">
         {resdata.map((res) => {
           return (
@@ -23,8 +24,9 @@ const RestaurantMenu = () => {
                 className="Food-items m-4 p-4 bg-red-300 flex justify-between"
               >
                 <li>
-                  {res.card.info.name} price : Rs {res.card.info.price / 100}{" "}
-                  ratings {res.card.info.ratings.aggregatedRating.rating}{" "}
+                  {res.card.info.name} price : Rs{" "}
+                  {res.card.info.defaultPrice / 100} ratings{" "}
+                  {res.card.info.ratings.aggregatedRating.rating}{" "}
                 </li>
                 <li>
                   {

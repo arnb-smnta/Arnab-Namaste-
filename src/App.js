@@ -2,7 +2,9 @@ import React, { Suspense, lazy, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { resobj } from "./utils/data.js";
 import Header from "./components/Header.jsx";
-import RestrauntCard from "./components/RestrauntCard.jsx";
+import RestrauntCard, {
+  withPromotedLabel,
+} from "./components/RestrauntCard.jsx";
 import { useState, useEffect } from "react";
 import Shimmer from "./components/shimmer.js";
 import {
@@ -22,6 +24,7 @@ const BodyApp = () => {
 
   const [resrest, data1] = useSwiggyData();
   const online = useOnlineStatus();
+  const RestrauntCardPromoted = withPromotedLabel(RestrauntCard);
   if (online === false) return <h1>You are offline</h1>;
   return resrest === null ? (
     <Shimmer />
@@ -68,8 +71,12 @@ const BodyApp = () => {
                 "/restaurant/" + restraunt.info.id + "/" + restraunt.info.name
               }
             >
-              {" "}
-              <RestrauntCard restraunt={restraunt} />
+              {Object.keys(restraunt.info.aggregatedDiscountInfoV3).length >
+              1 ? (
+                <RestrauntCardPromoted restraunt={restraunt} />
+              ) : (
+                <RestrauntCard restraunt={restraunt} />
+              )}
             </Link>
           );
         })}
