@@ -27,7 +27,12 @@ const RestaurantMenu = () => {
         <div className="text-4xl">{res_name}</div>
 
         {categories.map((category) => {
-          return <Restaurantitemlist data={category.card.card} />;
+          return (
+            <Restaurantitemlist
+              key={category.card.card.title}
+              data={category.card.card}
+            />
+          );
         })}
       </div>
     </div>
