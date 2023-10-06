@@ -20,11 +20,10 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
     );
   });
-  console.log(resd.REGULAR.cards);
-  console.log(categories);
+
   return (
-    <div>
-      <div key={resId.toString()} className="text-center">
+    <div key={resId.toString()}>
+      <div className="text-center">
         <div className="text-4xl">{res_name}</div>
 
         {categories.map((category) => {
