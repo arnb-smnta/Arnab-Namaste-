@@ -71,9 +71,13 @@ const BodyApp = () => {
                 "/restaurant/" + restraunt.info.id + "/" + restraunt.info.name
               }
             >
-              {Object.keys(restraunt.info.aggregatedDiscountInfoV3).length >
-              1 ? (
-                <RestrauntCardPromoted restraunt={restraunt} />
+              {restraunt.info.aggregatedDiscountInfoV3 ? (
+                Object.keys(restraunt.info.aggregatedDiscountInfoV3).length >
+                1 ? (
+                  <RestrauntCardPromoted restraunt={restraunt} />
+                ) : (
+                  <RestrauntCard restraunt={restraunt} />
+                )
               ) : (
                 <RestrauntCard restraunt={restraunt} />
               )}

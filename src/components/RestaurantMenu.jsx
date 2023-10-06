@@ -1,46 +1,36 @@
 import { useState, useEffect } from "react";
 import { menu_url, foodimgurl } from "../utils/data";
-import { Shimmer } from "./shimmer";
 import { useParams } from "react-router-dom";
 import useRestrauntMenu from "../utils/useRestrauntMenu";
+import Restaurantitemlist from "./Restaurantitemlist";
 const RestaurantMenu = () => {
   const { resId, res_name } = useParams();
-  console.log(resId.toString());
 
-  const resdata = useRestrauntMenu(resId);
+  const resd = useRestrauntMenu(resId);
 
-  if (resdata === null) return <div>loading</div>;
+  if (resd === null) return <div>loading</div>;
 
+  const resdata = resd.REGULAR.cards[1].card.card.itemCards;
+
+  const categories = resd.REGULAR.cards?.filter((c) => {
+    return (
+      c.card.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
+      c.card.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+    );
+  });
+  console.log(resd.REGULAR.cards);
+  console.log(categories);
   return (
     <div>
-      <h1>{res_name}</h1>
-      {console.log(resdata)}
-      <ul className="MenuItems">
-        {resdata.map((res) => {
-          return (
-            <div>
-              <div
-                key={res.card.info.id}
-                className="Food-items m-4 p-4 bg-red-300 flex justify-between"
-              >
-                <li>
-                  {res.card.info.name} price : Rs{" "}
-                  {res.card.info.defaultPrice / 100} ratings{" "}
-                  {res.card.info.ratings.aggregatedRating.rating}{" "}
-                </li>
-                <li>
-                  {
-                    <img
-                      className="food_itemlogo"
-                      src={foodimgurl + res.card.info.imageId}
-                    />
-                  }
-                </li>
-              </div>
-            </div>
-          );
+      <div key={resId.toString()} className="text-center">
+        <div className="text-4xl">{res_name}</div>
+
+        {categories.map((category) => {
+          return <Restaurantitemlist data={category.card.card} />;
         })}
-      </ul>
+      </div>
     </div>
   );
 };

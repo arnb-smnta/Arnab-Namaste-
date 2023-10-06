@@ -15,26 +15,6 @@ const useSwiggyData = () => {
     const json = await data.json();
 
     console.log(json);
-    for (let i = 1; i <= 10; i++) {
-      console.log(
-        Object.keys(
-          json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants[i]
-            .info.aggregatedDiscountInfoV3
-        ).length > 1
-      );
-    }
-    console.log(
-      Object.keys(
-        json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants[1]
-          .info.aggregatedDiscountInfoV3
-      ).length
-    );
-    console.log(
-      Object.keys(
-        json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants[2]
-          .info.aggregatedDiscountInfoV3
-      ).length
-    );
 
     setresrest(
       json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
@@ -43,8 +23,6 @@ const useSwiggyData = () => {
     setdata1(
       json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     );
-    console.log(data1);
-    console.log(resrest);
   };
   return [resrest, data1];
 };
