@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { logo_url } from "../utils/data";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [login, setlogin] = useState("login");
+  const data = useContext(UserContext);
+  //subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   return (
     <div className="flex justify-between bg-gray-400">
       <div>
@@ -23,7 +29,9 @@ const Header = () => {
           <li className="p-4">
             <Link to="/Contact">Contact us</Link>
           </li>
-          <li className="p-4">cart</li>
+          <li className="p-4">
+            <Link to="/cart">Cart ({cartItems.length}items)</Link>
+          </li>
           <button
             onClick={() => {
               login === "login" ? setlogin("logout") : setlogin("login");
@@ -32,6 +40,8 @@ const Header = () => {
           >
             {login}
           </button>
+
+          <li className="p-4 bold">{data.loggedinUser}</li>
         </ul>
       </div>
     </div>

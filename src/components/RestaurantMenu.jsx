@@ -5,7 +5,7 @@ import useRestrauntMenu from "../utils/useRestrauntMenu";
 import Restaurantitemlist from "./Restaurantitemlist";
 const RestaurantMenu = () => {
   const { resId, res_name } = useParams();
-
+  const [showIndex, setshowIndex] = useState(0);
   const resd = useRestrauntMenu(resId);
 
   if (resd === null) return <div>loading</div>;
@@ -25,12 +25,17 @@ const RestaurantMenu = () => {
     <div key={resId.toString()}>
       <div className="text-center">
         <div className="text-4xl">{res_name}</div>
+        {console.log("arnab")}
 
-        {categories.map((category) => {
+        {categories.map((category, index) => {
           return (
             <Restaurantitemlist
               key={category.card.card.title}
               data={category.card.card}
+              showItems={index === showIndex ? true : false}
+              changeIndex={() => {
+                showIndex === index ? setshowIndex(null) : setshowIndex(index);
+              }}
             />
           );
         })}

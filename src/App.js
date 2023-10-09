@@ -1,7 +1,10 @@
-import React, { Suspense, lazy, useState } from "react";
+import React, { useContext, Suspense, lazy, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { resobj } from "./utils/data.js";
+import { Provider } from "react-redux";
+
 import Header from "./components/Header.jsx";
+import Cart from "./components/Cart.js";
+
 import RestrauntCard, {
   withPromotedLabel,
 } from "./components/RestrauntCard.jsx";
@@ -21,10 +24,12 @@ import useSwiggyData from "./utils/useSwiggyData.js";
 import useOnlineStatus from "./utils/useOnlineStatus.js";
 const BodyApp = () => {
   const [inp, setinp] = useState("");
+  const data = useContext(UserContext);
 
   const [resrest, data1] = useSwiggyData();
   const online = useOnlineStatus();
   const RestrauntCardPromoted = withPromotedLabel(RestrauntCard);
+
   if (online === false) return <h1>You are offline</h1>;
   return resrest === null ? (
     <Shimmer />
@@ -50,17 +55,15 @@ const BodyApp = () => {
           Search
         </button>
       </div>
-      <div className="filter">
-        <button
-          onClick={() => {
-            const filterdlist = resrest.filter((res) => res.info.avgRating > 4);
-            console.log(filterdlist);
-            setdata1(filterdlist);
-          }}
-          className="filter-btn"
-        >
-          Top Rated Restraunt
-        </button>
+      <div className="m-4 p-4">
+        <label className="p-4">USername</label>
+        <input
+          className="border border-black px-4"
+          type="text"
+          value={data.loggedinUser}
+          onChange={(e) => data.setusername(e.target.value)}
+        />
+        <div></div>
       </div>
       <div className="Res-container flex flex-wrap">
         {data1.map((restraunt) => {
@@ -92,15 +95,31 @@ const Grocery = lazy(() => {
   return import("./components/Grocery.js");
 });
 const Applayout = () => {
+  const [username, setusername] = useState();
+  useEffect(() => {
+    //Making a dummy api call for fetchin the user name of logged in user
+    const data = {
+      name: "ghonteswar",
+    };
+    setusername(data.name);
+  });
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedinUser: username, setusername }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 import Error from "./components/Error";
 import useOnlineStatus from "./utils/useOnlineStatus.js";
+import UserContext from "./utils/UserContext.js";
+import react from "react";
+import appStore from "./utils/appStore.js";
+
 const appRouting = createBrowserRouter([
   {
     path: "/",
@@ -125,6 +144,7 @@ const appRouting = createBrowserRouter([
         element: <Contact />,
       },
       { path: "/restaurant/:resId/:res_name", element: <RestaurantMenu /> },
+      { path: "/cart", element: <Cart /> },
     ],
     errorElement: <Error />,
   },

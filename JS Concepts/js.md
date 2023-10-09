@@ -46,7 +46,8 @@ x.toString(2);
 });
 const output3 = arr.map((x) => x.toString(2));
 const outputtriple = arr.map(triple);
-const outputdouble = arr.map(double);
+const outputdouble = arr.map(double,index);
+if you give 2nd parameter to map it will be index of map
 
 console.log(output, outputtriple, outputdouble, output1, output2, output3);
 

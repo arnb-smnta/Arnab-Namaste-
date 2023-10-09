@@ -1,17 +1,29 @@
 import { foodimgurl } from "../utils/data";
-const Itemlist = (inf) => {
-  let data = [];
-  if (inf.inf.data.title === "Recommended") {
-    data = inf.inf.data.itemCards;
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
+const Itemlist = ({ inf }) => {
+  /*let data = [];
+  data = inf.itemCards;
+  console.log(data);*/
+
+  /*if (inf.title === "Recommended") {
+    
   } else {
-    data = inf.inf.data.categories[0].itemCards;
-  }
-  let date = [];
+    data = inf.categories[0].itemCards;
+  }*/
+
+  const dispatch = useDispatch();
+  const handleaddItem = (d) => {
+    //dispatch action
+    console.log("clicked add button");
+    console.log(d);
+    dispatch(addItem(d));
+  };
 
   return (
     <div>
       <ul>
-        {data.map((d) => {
+        {inf.map((d) => {
           return (
             <div key={d.card.info.id}>
               <div className="Food-items m-4 p-4 bg-red-300 flex justify-between">
@@ -26,13 +38,24 @@ const Itemlist = (inf) => {
                   </div>
 
                   <div className="p-2 m-2">{d.card.info.description}</div>
+
+                  <div>
+                    <button
+                      onClick={() => handleaddItem(d)}
+                      className="border border-black text-center p-5 bg-white "
+                    >
+                      Add Item
+                    </button>
+                  </div>
                 </li>
                 <li>
                   {
-                    <img
-                      className="food_itemlogo"
-                      src={foodimgurl + d.card.info.imageId}
-                    />
+                    <div className="p-4 m-4">
+                      <img
+                        className="food_itemlogo"
+                        src={foodimgurl + d.card.info.imageId}
+                      />
+                    </div>
                   }
                 </li>
               </div>
