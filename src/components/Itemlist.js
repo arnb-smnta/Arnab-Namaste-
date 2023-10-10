@@ -1,6 +1,7 @@
 import { foodimgurl } from "../utils/data";
 import { addItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+
 const Itemlist = ({ inf }) => {
   /*let data = [];
   data = inf.itemCards;
