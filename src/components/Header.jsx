@@ -9,7 +9,7 @@ const Header = () => {
   const data = useContext(UserContext);
   //subscribing to the store using a selector
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+
   return (
     <div className="flex justify-between bg-gray-400">
       <div>
