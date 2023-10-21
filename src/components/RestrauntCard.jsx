@@ -1,5 +1,6 @@
 import { pic_url } from "../utils/data";
 const RestrauntCard = (props) => {
+  console.log(props);
   return (
     <div className="res-card m-4 p-4 w-[250px] h-[550px] bg-green-400">
       <img
